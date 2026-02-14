@@ -26,8 +26,19 @@ def health_check(db: Session = Depends(get_db)):
         res = db.execute(text("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"))
         tables = [row[0] for row in res]
         
+        # Try ORM query
+        from app.models.user import User
+        try:
+            user_count = db.query(User).count()
+            orm_ok = True
+        except Exception as orm_err:
+            orm_ok = f"Error: {str(orm_err)}"
+            user_count = -1
+        
     except Exception as e:
         db_status = f"Error: {str(e)}"
+        orm_ok = "Skipped"
+        user_count = -1
 
     # 2. Inspect Environment Variables (Selective/Masked)
     masked_db = settings.DATABASE_URL[:30] + "..." if settings.DATABASE_URL else "None"
@@ -38,7 +49,11 @@ def health_check(db: Session = Depends(get_db)):
             "status": db_status,
             "name": current_db,
             "tables_found": len(tables),
-            "tables": tables
+            "tables": tables,
+            "orm_test": {
+                "ok": orm_ok,
+                "user_count": user_count
+            }
         },
         "config": {
             "PROJECT_NAME": settings.PROJECT_NAME,
