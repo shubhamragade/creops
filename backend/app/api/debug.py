@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+from sqlalchemy import text
 from app.api.deps import get_db
 from app.core.config import settings
-from sqlalchemy import text
 import os
 
 router = APIRouter()
@@ -13,6 +13,11 @@ def health_check(db: Session = Depends(get_db)):
     db_status = "Unknown"
     current_db = "Unknown"
     tables = []
+    orm_ok = "Not Tested"
+    user_count = -1
+    user_emails = []
+    shubham_pass_verified = "N/A"
+
     try:
         # Check connection
         db.execute(text("SELECT 1"))
@@ -21,6 +26,10 @@ def health_check(db: Session = Depends(get_db)):
         # Get DB name
         res = db.execute(text("SELECT current_database()"))
         current_db = res.scalar()
+        
+        # Get Current Schema
+        res = db.execute(text("SELECT current_schema()"))
+        current_schema = res.scalar()
         
         # List tables with their schemas
         res = db.execute(text("SELECT table_schema, table_name FROM information_schema.tables WHERE table_schema NOT IN ('information_schema', 'pg_catalog')"))
@@ -40,19 +49,17 @@ def health_check(db: Session = Depends(get_db)):
             if shub_user:
                 is_valid = verify_password("Demo@2026!", shub_user.hashed_password)
                 pass_test = "Correct" if is_valid else "Incorrect"
+            shubham_pass_verified = pass_test
             
             orm_ok = True
         except Exception as orm_err:
             orm_ok = f"Error: {str(orm_err)}"
             user_count = -1
             user_emails = []
-            pass_test = "N/A"
         
     except Exception as e:
         db_status = f"Error: {str(e)}"
         orm_ok = "Skipped"
-        user_count = -1
-        user_emails = []
 
     # 2. Inspect Environment Variables (Selective/Masked)
     masked_db = settings.DATABASE_URL[:30] + "..." if settings.DATABASE_URL else "None"
@@ -62,21 +69,20 @@ def health_check(db: Session = Depends(get_db)):
         "database": {
             "status": db_status,
             "name": current_db,
-            "current_schema": db.execute(text("SELECT current_schema()")).scalar(),
+            "current_schema": current_schema,
             "tables_found": len(tables),
             "tables": tables,
             "orm_test": {
                 "ok": orm_ok,
                 "user_count": user_count,
                 "emails": user_emails,
-                "shubham_pass_verified": pass_test
+                "shubham_pass_verified": shubham_pass_verified
             }
         },
         "config": {
             "PROJECT_NAME": settings.PROJECT_NAME,
             "DATABASE_URL_START": masked_db,
             "FRONTEND_URL": settings.FRONTEND_URL,
-            "ENV_JWT_SECRET_SET": bool(os.getenv("JWT_SECRET")),
             "PYTHON_VERSION": os.getenv("PYTHON_VERSION")
         }
     }

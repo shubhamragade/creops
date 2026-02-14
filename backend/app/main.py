@@ -75,6 +75,9 @@ app.include_router(forms_router, prefix="/api/forms", tags=["forms"])
 from app.api.services import router as services_router
 app.include_router(services_router, prefix="/api/services", tags=["services"])
 
+from app.api.debug import router as debug_router
+app.include_router(debug_router, prefix="/api/debug", tags=["debug"])
+
 @app.get("/")
 async def root():
     return {"message": "Welcome to CareOps API"}
