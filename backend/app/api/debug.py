@@ -22,9 +22,9 @@ def health_check(db: Session = Depends(get_db)):
         res = db.execute(text("SELECT current_database()"))
         current_db = res.scalar()
         
-        # List tables
-        res = db.execute(text("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"))
-        tables = [row[0] for row in res]
+        # List tables with their schemas
+        res = db.execute(text("SELECT table_schema, table_name FROM information_schema.tables WHERE table_schema NOT IN ('information_schema', 'pg_catalog')"))
+        tables = [f"{row[0]}.{row[1]}" for row in res]
         
         # Try ORM query
         from app.models.user import User
@@ -52,11 +52,13 @@ def health_check(db: Session = Depends(get_db)):
         "database": {
             "status": db_status,
             "name": current_db,
+            "current_schema": db.execute(text("SELECT current_schema()")).scalar(),
             "tables_found": len(tables),
             "tables": tables,
             "orm_test": {
                 "ok": orm_ok,
-                "user_count": user_count
+                "user_count": user_count,
+                "emails": user_emails
             }
         },
         "config": {
