@@ -28,15 +28,25 @@ def health_check(db: Session = Depends(get_db)):
         
         # Try ORM query
         from app.models.user import User
+        from app.core.security import verify_password
         try:
             users = db.query(User).all()
             user_count = len(users)
             user_emails = [u.email for u in users]
+            
+            # Test password for shubham user
+            shub_user = db.query(User).filter(User.email == "shubhamragade2003@gmail.com").first()
+            pass_test = "User Not Found"
+            if shub_user:
+                is_valid = verify_password("Demo@2026!", shub_user.hashed_password)
+                pass_test = "Correct" if is_valid else "Incorrect"
+            
             orm_ok = True
         except Exception as orm_err:
             orm_ok = f"Error: {str(orm_err)}"
             user_count = -1
             user_emails = []
+            pass_test = "N/A"
         
     except Exception as e:
         db_status = f"Error: {str(e)}"
@@ -58,7 +68,8 @@ def health_check(db: Session = Depends(get_db)):
             "orm_test": {
                 "ok": orm_ok,
                 "user_count": user_count,
-                "emails": user_emails
+                "emails": user_emails,
+                "shubham_pass_verified": pass_test
             }
         },
         "config": {
