@@ -24,6 +24,7 @@ from app.api.inbox import router as inbox_router
 origins = [
     "http://localhost:3000",
     "http://localhost:3001",
+    "https://creops.vercel.app",
 ]
 
 # Allow the configured FRONTEND_URL (e.g. LAN IP or Production Domain)

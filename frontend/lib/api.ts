@@ -1,7 +1,20 @@
 import axios from 'axios';
 
+// Determine the API base URL
+// Priority: env var > auto-detect production > localhost fallback
+function getBaseURL(): string {
+    if (process.env.NEXT_PUBLIC_API_URL) {
+        return process.env.NEXT_PUBLIC_API_URL;
+    }
+    // Auto-detect: if running on Vercel production domain, use Render backend
+    if (typeof window !== 'undefined' && window.location.hostname === 'creops.vercel.app') {
+        return 'https://careops-backend-6img.onrender.com';
+    }
+    return 'http://localhost:8000';
+}
+
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',
+    baseURL: getBaseURL(),
     // Don't set default Content-Type - let each request specify its own
 });
 

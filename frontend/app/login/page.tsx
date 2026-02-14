@@ -48,8 +48,11 @@ export default function LoginPage() {
                 router.replace('/staff');
             }
         } catch (err: any) {
-            console.error(err);
-            setError(err.response?.data?.detail || 'Invalid credentials');
+            console.error('Login error:', err);
+            console.error('Response status:', err.response?.status);
+            console.error('Response data:', err.response?.data);
+            console.error('Request URL:', err.config?.baseURL + err.config?.url);
+            setError(err.response?.data?.detail || err.message || 'Invalid credentials');
         } finally {
             setLoading(false);
         }
