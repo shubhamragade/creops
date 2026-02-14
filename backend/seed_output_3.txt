@@ -1,0 +1,19 @@
+Checking for user shubhamragade2003@gmail.com...
+User found: SHUBHAM BALASAHEB RAGADE
+Using existing workspace: shubhamragade 
+Updated workspace details to Luminous Wellness Spa
+Created service: Deep Tissue Massage
+Created service: HydraFacial Signature
+Created service: Aromatherapy Massage
+Created service: Hot Stone Therapy
+Created service: Chemical Peel
+Created staff: Michael Chen
+Created staff: Sarah Jenkins
+Created staff: Emma Wright
+Created contact: Emily Blunt
+Created contact: John Doe
+Created contact: Alice Smith
+Created contact: Robert Brown
+Created contact: Linda Davis
+Seeding bookings...
+Created random bookings.

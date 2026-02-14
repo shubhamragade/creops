@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\hackproject\careops-mvp\backend\verify_gmail_migration.py", line 14, in <module>
+    from app.models.product import Product
+ModuleNotFoundError: No module named 'app.models.product'

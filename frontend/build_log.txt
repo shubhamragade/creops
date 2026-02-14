@@ -1,0 +1,50 @@
+
+> careops-frontend@0.1.0 build
+> next build
+
+  Γû▓ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+ Γ¿» ESLint must be installed in order to run during builds: npm install --save-dev eslint
+   Collecting page data ...
+   Generating static pages (0/20) ...
+   Generating static pages (5/20) 
+   Generating static pages (10/20) 
+   Generating static pages (15/20) 
+ Γ£ô Generating static pages (20/20)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                               Size     First Load JS
+Γöî Γùï /                                     175 B          96.2 kB
+Γö£ Γùï /_not-found                           873 B          88.2 kB
+Γö£ Γùï /automations                          2.12 kB        89.4 kB
+Γö£ ╞Æ /book/[workspace]                     5.53 kB         121 kB
+Γö£ Γùï /bookings                             7.11 kB         123 kB
+Γö£ Γùï /contacts                             2.56 kB         118 kB
+Γö£ Γùï /dashboard                            7.25 kB         132 kB
+Γö£ Γùï /dashboard/settings                   4.27 kB         120 kB
+Γö£ Γùï /forms                                5.18 kB         121 kB
+Γö£ Γùï /forms-manage                         5.18 kB         121 kB
+Γö£ ╞Æ /forms/intake/[bookingId]             4.47 kB         120 kB
+Γö£ Γùï /inbox                                6.14 kB         122 kB
+Γö£ Γùï /inventory                            4.96 kB         121 kB
+Γö£ Γùï /leads                                4.33 kB         120 kB
+Γö£ Γùï /login                                3.77 kB         119 kB
+Γö£ Γùï /settings/gmail-callback              1.84 kB         110 kB
+Γö£ Γùï /settings/google-callback             1.31 kB         110 kB
+Γö£ Γùï /signup                               3.97 kB         120 kB
+Γö£ Γùï /staff                                5.69 kB         130 kB
+Γö£ Γùï /staff-management                     5.65 kB         121 kB
+Γöö ╞Æ /workspaces/[workspace_slug]/contact  3.61 kB         119 kB
++ First Load JS shared by all             87.3 kB
+  Γö£ chunks/117-4266c62f1bb06c8c.js        31.7 kB
+  Γö£ chunks/fd9d1056-40982339ec9e224e.js   53.6 kB
+  Γöö other shared chunks (total)           1.95 kB
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

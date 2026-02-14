@@ -1,0 +1,22 @@
+ID    | Recipient                      | Type            | Status     | Error
+----------------------------------------------------------------------------------------------------
+133   | shubhamragade2014@gamil.com    | form_link       | success    | 
+132   | shubhamragade2014@gamil.com    | confirmation    | success    | 
+131   | shubhamragade2014@gamil.com    | welcome         | success    | 
+130   | shubhamragade2014@gmail.com    | reply           | success    | 
+129   | shubhamragade2014@gmail.com    | confirmation    | success    | 
+128   | owner@demo-spa.com             | owner_alert     | success    | 
+127   | shubhamragade2014@gmail.com    | form_link       | success    | 
+126   | shubhamragade2014@gmail.com    | confirmation    | success    | 
+125   | shubhamragade2014@gmail.com    | form_link       | failed     | Gmail Send Failed: Invalid access token for workspace 1
+124   | shubhamragade2014@gmail.com    | confirmation    | retrying   | Gmail Send Failed: Invalid access token for workspace 1
+123   | debug_inbox@example.com        | reply           | failed     | Gmail Send Failed: Invalid access token for workspace 1
+122   | tester@example.com             | form_link       | failed     | Gmail not connected
+121   | tester@example.com             | confirmation    | failed     | Gmail not connected
+120   | test1319@spa.com               | inventory       | failed     | Gmail not connected
+119   | tester@example.com             | welcome         | failed     | Gmail not connected
+118   | reminder@example.com           | form_link       | failed     | Gmail not connected
+117   | reminder@example.com           | confirmation    | failed     | Gmail not connected
+116   | reminder@example.com           | welcome         | failed     | Gmail not connected
+115   | owner@demo-spa.com             | owner_alert     | failed     | Gmail not connected
+114   | patient@example.com            | form_link       | failed     | Gmail not connected

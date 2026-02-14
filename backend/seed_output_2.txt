@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\util\_collections.py", line 345, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'EmailIntegration'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\hackproject\careops-mvp\backend\seed_wellness_spa.py", line 27, in seed_data
+    user = db.query(User).filter(User.email == user_email).first()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in _set_entities
+    coercions.expect(
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1338, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4218, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4259, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 595, in init
+    self.do_init()
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1655, in do_init
+    self._setup_entity()
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1865, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Workspace(workspaces)], expression 'EmailIntegration' failed to locate a name ('EmailIntegration'). If this is a class name, consider adding this relationship() to the <class 'app.models.workspace.Workspace'> class after both dependent classes have been defined.
+Checking for user shubhamragade2003@gmail.com...
+Error seeding data: When initializing mapper Mapper[Workspace(workspaces)], expression 'EmailIntegration' failed to locate a name ('EmailIntegration'). If this is a class name, consider adding this relationship() to the <class 'app.models.workspace.Workspace'> class after both dependent classes have been defined.

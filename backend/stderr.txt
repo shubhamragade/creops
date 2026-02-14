@@ -1,0 +1,10 @@
+C:\Users\shubh\anaconda3\Lib\site-packages\pydantic\_internal\_config.py:373: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\hackproject\careops-mvp\backend\app\main.py", line 47, in <module>
+    from app.api.settings import router as settings_router
+  File "C:\hackproject\careops-mvp\backend\app\api\settings.py", line 11, in <module>
+    from app.api.auth import get_current_user
+ImportError: cannot import name 'get_current_user' from 'app.api.auth' (C:\hackproject\careops-mvp\backend\app\api\auth.py)

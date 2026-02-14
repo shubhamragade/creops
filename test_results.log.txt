@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+
+[94m============================================================[0m
+[94mCAREOPS MVP - END-TO-END SYSTEM TEST[0m
+[94m============================================================[0m
+
+
+[94mPhase 1: Backend Health Check[0m
+------------------------------------------------------------
+  File "C:\hackproject\careops-mvp\tests\e2e_system_test.py", line 95, in <module>
+    results.add_pass("Backend is running")
+  File "C:\hackproject\careops-mvp\tests\e2e_system_test.py", line 35, in add_pass
+    print(f"{Colors.GREEN}\u2713{Colors.END} {test_name}")
+  File "C:\Users\shubh\anaconda3\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 5: character maps to <undefined>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\hackproject\careops-mvp\tests\e2e_system_test.py", line 99, in <module>
+    results.add_fail("Backend is running", str(e))
+  File "C:\hackproject\careops-mvp\tests\e2e_system_test.py", line 39, in add_fail
+    print(f"{Colors.RED}\u2717{Colors.END} {test_name}: {error}")
+  File "C:\Users\shubh\anaconda3\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2717' in position 5: character maps to <undefined>

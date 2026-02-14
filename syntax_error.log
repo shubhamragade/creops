@@ -1,0 +1,4 @@
+Error: 1 validation error for Settings
+DATABASE_URL
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing

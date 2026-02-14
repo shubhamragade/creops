@@ -1,0 +1,2 @@
+--- Checking Workspaces ---
+Error: When initializing mapper Mapper[Workspace(workspaces)], expression 'User' failed to locate a name ('User'). If this is a class name, consider adding this relationship() to the <class 'app.models.workspace.Workspace'> class after both dependent classes have been defined.

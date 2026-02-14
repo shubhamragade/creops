@@ -1,0 +1,61 @@
+
+[94m============================================================[0m
+[94mCAREOPS MVP - END-TO-END SYSTEM TEST[0m
+[94m============================================================[0m
+
+
+[94mPhase 1: Backend Health Check[0m
+------------------------------------------------------------
+[92mΓ£ô[0m Backend is running
+
+[94mPhase 2: Authentication[0m
+------------------------------------------------------------
+[92mΓ£ô[0m Signup - Create new business
+[91mΓ£ù[0m Login - Owner credentials: Status 422
+[91mΓ£ù[0m Invalid credentials - Login fail: Expected 401, got 422
+
+[94mPhase 3: Owner Features[0m
+------------------------------------------------------------
+[91mΓ£ù[0m Dashboard - View stats: Status 404
+[92mΓ£ô[0m Leads - View all leads
+[92mΓ£ô[0m Bookings - View all bookings
+
+[94mPhase 4: Public Features[0m
+------------------------------------------------------------
+[93mΓèÿ[0m Lead form - Submit inquiry: No workspace slug
+
+[94mPhase 5: Gmail Integration[0m
+------------------------------------------------------------
+[93mΓèÿ[0m Gmail - Status shows connected: Gmail not connected
+
+[94mPhase 6: Edge Cases[0m
+------------------------------------------------------------
+[92mΓ£ô[0m Duplicate email - Signup fail
+[91mΓ£ù[0m Unauthorized access - 401/403: Expected 401/403, got 404
+[92mΓ£ô[0m Non-existent resource - 404
+
+[94mPhase 7: Frontend Health[0m
+------------------------------------------------------------
+[93mΓèÿ[0m Frontend is running: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D73BB3F8C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+============================================================
+[94mTEST SUMMARY[0m
+============================================================
+[92mPassed:[0m 6/13
+[91mFailed:[0m 4/13
+[93mSkipped:[0m 3/13
+
+[91mFAILED TESTS:[0m
+  - Login - Owner credentials: Status 422
+  - Invalid credentials - Login fail: Expected 401, got 422
+  - Dashboard - View stats: Status 404
+  - Unauthorized access - 401/403: Expected 401/403, got 404
+
+[93mSKIPPED TESTS:[0m
+  - Lead form - Submit inquiry: No workspace slug
+  - Gmail - Status shows connected: Gmail not connected
+  - Frontend is running: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D73BB3F8C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+============================================================
+
+[91mΓÜá∩╕Å  Some tests failed. Review failures before deployment.[0m
+
