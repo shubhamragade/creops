@@ -29,20 +29,20 @@ def health_check(db: Session = Depends(get_db)):
         # Try ORM query
         from app.models.user import User
         try:
-            user_count = db.query(User).count()
-            first_user = db.query(User).first()
-            first_user_email = first_user.email if first_user else "None"
+            users = db.query(User).all()
+            user_count = len(users)
+            user_emails = [u.email for u in users]
             orm_ok = True
         except Exception as orm_err:
             orm_ok = f"Error: {str(orm_err)}"
             user_count = -1
-            first_user_email = "N/A"
+            user_emails = []
         
     except Exception as e:
         db_status = f"Error: {str(e)}"
         orm_ok = "Skipped"
         user_count = -1
-        first_user_email = "N/A"
+        user_emails = []
 
     # 2. Inspect Environment Variables (Selective/Masked)
     masked_db = settings.DATABASE_URL[:30] + "..." if settings.DATABASE_URL else "None"
