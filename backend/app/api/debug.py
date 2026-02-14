@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from app.api import deps
+from app.api.deps import get_db
 from app.core.config import settings
 from sqlalchemy import text
 import os
@@ -8,7 +8,7 @@ import os
 router = APIRouter()
 
 @router.get("/health")
-def health_check(db: Session = Depends(deps.get_db)):
+def health_check(db: Session = Depends(get_db)):
     # 1. Check DB connection
     db_status = "Unknown"
     try:
