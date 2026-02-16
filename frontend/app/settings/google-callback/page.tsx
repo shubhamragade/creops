@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import axios from 'axios';
+import api from '../../../lib/api';
 
 import { Suspense } from 'react';
 
@@ -37,8 +37,8 @@ function GoogleCallbackContent() {
             }
 
             try {
-                // Call backend callback endpoint
-                await axios.get(`http://localhost:8001/api/auth/google/callback`, {
+                // Call backend callback endpoint using the dynamic API client
+                const response = await api.get(`/api/auth/google/callback`, {
                     params: { code, state }
                 });
 

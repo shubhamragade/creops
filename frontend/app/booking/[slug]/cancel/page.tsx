@@ -2,6 +2,7 @@
 
 import { useSearchParams, useParams } from "next/navigation";
 import { useState, Suspense } from "react";
+import api from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle, CheckCircle, XCircle, Loader2 } from "lucide-react";
@@ -39,21 +40,8 @@ function CancelBookingContent() {
         setError(null);
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/bookings/${bookingId}/cancel?token=${encodeURIComponent(token)}`, {
-                method: "POST",
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                if (data.status === "already_cancelled") {
-                    setIsCancelled(true);
-                    showToast("This booking was already cancelled.", "info");
-                    return;
-                }
-                throw new Error(data.detail || "Failed to cancel booking");
-            }
-
+            const response = await api.post(`/api/bookings/${bookingId}/cancel?token=${encodeURIComponent(token)}`);
+            // Axios doesn't have .ok, it throws on 4xx/5xx by default, or you check status
             setIsCancelled(true);
             showToast("Your booking has been successfully cancelled.", "success");
 

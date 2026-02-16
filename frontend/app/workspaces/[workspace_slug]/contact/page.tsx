@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
-import axios from 'axios';
+import api from '@/lib/api';
 import { Button } from '@/components/ui/button';
 import { CheckCircle2, Send } from 'lucide-react';
 
@@ -34,8 +34,8 @@ export default function LeadFormPage() {
         setError('');
 
         try {
-            await axios.post(
-                `http://localhost:8001/api/workspaces/${workspace_slug}/lead-form`,
+            await api.post(
+                `/api/workspaces/${workspace_slug}/lead-form`,
                 formData
             );
             setSubmitted(true);
